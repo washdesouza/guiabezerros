@@ -1,0 +1,31 @@
+page-pesquisa {
+
+
+    p {
+        max-width: 190px; /* Tamanho */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap
+      }
+    
+     /* h2 {
+        max-width: 210px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap
+      }*/
+      img {
+        margin-top: 5px;
+    
+      }
+    
+      .line {
+        width: 90%; /* coloque aqui a largura da linha */
+        border-top: 1px solid gray;
+        list-style-type: none;
+      }
+      .top{
+          margin-top: 8px;
+      }
+    }
+    

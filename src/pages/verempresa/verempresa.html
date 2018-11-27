@@ -1,0 +1,186 @@
+
+<ion-header>
+  <ion-row style="background-color:white">
+      <ion-col col-10>
+        <img (click)="irHome()" src="assets/imgs/Home.png" width="35px">
+        <img src="assets/imgs/logoguiabezerros2.jpg" width="50%">
+      </ion-col>
+      <ion-col text-center col-2>
+      </ion-col>
+    </ion-row> 
+
+</ion-header>
+<br><br><br><br>
+<ion-content class="">
+<div *ngFor="let item of verempresas">
+<ion-row onload="getHit(item.id, item.hits)">
+
+  <ion-item>
+    <ion-avatar item-start>
+      <img src="https://app.agreste360graus.com.br/bezerros/userfiles/contents/icon/{{item.logo}}" [hidden]="item.special == 0">
+    </ion-avatar>
+    <h1>{{item.company}}</h1>
+    <p class="livre">{{item.address}}</p>
+  </ion-item>
+
+  <ion-slides pager [hidden]="item.special <= 1">
+    <!-- slide 1-->
+      <ion-slide ng-show='item.banner != ""'>
+        
+        <img src="https://app.agreste360graus.com.br/bezerros/userfiles/contents/big/{{item.banner}}">
+      </ion-slide>
+<!-- slide 2-->
+      <ion-slide ng-show='item.banner2 != ""'>
+          
+          <img src="https://app.agreste360graus.com.br/bezerros/userfiles/contents/big/{{item.banner2}}">
+        </ion-slide>
+<!-- slide 3 -->
+<ion-slide ng-show='item.banner3 != ""'>
+  
+  <img src="https://app.agreste360graus.com.br/bezerros/userfiles/contents/big/{{item.banner3}}">
+</ion-slide>
+<!-- slide 4--> 
+<ion-slide ng-show='item.banner4 != ""'>
+    
+    <img src="https://app.agreste360graus.com.br/bezerros/userfiles/contents/big/{{item.banner4}}">
+  </ion-slide>
+<!-- slide 5-->
+<ion-slide ng-show='item.banner5 != ""'>
+     
+    <img src="https://app.agreste360graus.com.br/bezerros/userfiles/contents/big/{{item.banner5}}">
+  </ion-slide>
+  <!-- fim dos slides -->
+    </ion-slides>
+    <ion-slides pager [hidden]="item.special != 1">
+        <ion-slide >          
+            <img src="https://app.agreste360graus.com.br/bezerros/userfiles/contents/big/{{item.banner}}">
+        </ion-slide>
+    </ion-slides>
+  
+ 
+    <ion-row class="col-md-12" [hidden]="item.special == 0">
+      <ion-col col-4 >
+        <div [hidden]="item.iphone == ''">
+        <a style="padding: 15px 0 20px 0;" ion-button icon-left clear small (click)="map(item.longitude, item.latitude)">
+          <img  class="btn" src="assets/imgs/btn_maps.png"/>
+        </a>
+      </div>
+      </ion-col>
+      <ion-col col-4 [hidden]="item.android == ''">
+        <div >
+        <a style="padding: 15px 0 20px 0;" ion-button icon-left clear small href="{{item.android}}">
+           <img class="btn" src="assets/imgs/btn_site.png" />
+        </a>
+      </div>
+      </ion-col>
+      <ion-col col-4> 
+        <div [hidden]="item.website == ''">  
+        <a style="padding: 15px 0 20px 0; " ion-button icon-left clear small (click)="abrirOferta(item.id)" > 
+            <img class="btn" src="assets/imgs/btn_ofertas.png" />
+         </a>
+        </div>
+
+        <div [hidden]="item.website !== ''">  
+            <button style="padding: 15px 0 20px 0; " ion-button icon-left clear small (click)="semOfertaToast()"> 
+                <img class="btn" src="assets/imgs/btn_ofertas.png" />
+            </button>
+            </div>
+
+        </ion-col>
+    </ion-row>
+
+
+</ion-row>
+<div [hidden]="item.content == ''" [hidden]="item.special == 0">
+
+   
+        <ion-row>
+        
+    <div col-12>
+      <img class="img-responsive" src="assets/imgs/ln_desc.png"/> 
+    </div>
+
+     <span padding [innerHTML]="item.content"></span>
+     
+   
+  </ion-row>   
+    
+  
+ 
+</div>
+<hr/>
+
+<ion-card [hidden]="item.special == 0">      
+<ion-row>
+    <ion-item>
+  <div col-12>
+    <img sclass="img-responsive" src="assets/imgs/ln_end.png"/> 
+  </div>
+  <ion-card-content><p> {{item.address}}, <br>{{item.city}}, {{item.state}}, {{item.zip}} </p> </ion-card-content>
+   
+</ion-item>    
+</ion-row>
+</ion-card>
+
+
+<hr/>
+
+<ion-card>      
+    <ion-row>
+        <ion-item>
+<div col-12>
+    <img class="img-responsive" src="assets/imgs/ln-contato.png"/> 
+</div>
+<ion-row [hidden]="item.phone1 == ''"> 
+  <div col-2><a href="tel:{{item.phone1}}"> <img src="assets/imgs/phone.png" width="15px"/></a></div>
+  <div col-10> <h1 style="padding:10px 20px; margin-top:-10px; font-size: 30px;"> <a href="tel:{{item.phone1}}">   {{item.phone1}}</a> </h1></div> 
+</ion-row>
+
+<ion-row [hidden]="item.key_person1 == ''">
+    <div col-2 ><a href="tel:{{item.key_person1}}"><img src="assets/imgs/phone.png" width="15px"/></a></div>
+    <div col-10> <h1 style="padding:10px 20px; margin-top:-10px; font-size: 30px;"> <a href="tel:{{item.key_person1}}">   {{item.key_person1}}</a> </h1></div>  
+</ion-row>
+
+<ion-row [hidden]="item.key_person2 == ''">
+
+  <div col-2><a href="https://api.whatsapp.com/send?phone=5581{{item.key_person2}}&text=Mensagem%20enviada%20pelo%20aplicativo%20Guia%20Bezerros..Gostaria%20de%20uma%20informação."><img src="assets/imgs/Whatsapp_37229.png" width="25px"/></a></div>
+  <div col-10><h1 style="padding:10px 20px; margin-top:-10px; font-size: 30px;" > <a href="https://api.whatsapp.com/send?phone=5581{{item.key_person2}}&text=Mensagem%20enviada%20pelo%20aplicativo%20Guia%20Bezerros..Gostaria%20de%20uma%20informação.">   {{item.key_person2}}</a> </h1>    </div>  
+
+</ion-row>
+
+<hr/>
+
+<ion-row>
+
+<p style="padding:5px 20px">E-mail</p>
+
+</ion-row>
+
+<ion-row>
+
+  <p style="padding:5px 20px; margin-top:-10px"> <a href="mailto:{{item.email1}}">   {{item.email1}}</a> </p> 
+  <p style="padding:5px 20px; margin-top:-10px"> <a href="mailto:{{item.email2}}">   {{item.email2}}</a> </p>        
+</ion-row>
+</ion-item>
+</ion-row>
+</ion-card>
+
+<ion-card [hidden]="item.special == 0">
+<ion-row>
+  <ion-item>
+      <ion-row>
+      <div col-2 [hidden]="item.facebook == ''"><a href="{{item.facebook}}"><img src="assets/imgs/facebook.png" width="25px"/></a></div>
+      <div col-2 [hidden]="item.instagram == ''"><a href="{{item.instagram}}"><img src="assets/imgs/instagram.png" width="25px"/></a></div>
+      <div col-2 [hidden]="item.youtube == ''"><a href="{{item.youtube}}"><img src="assets/imgs/youtube.png" width="25px"/></a></div>
+      <div col-2 [hidden]="item.twitter == ''"><a href="{{item.twitter}}"><img src="assets/imgs/twitter-icon.png" width="25px"/></a></div>
+      <div col-2 [hidden]="item.gmais == ''"><a href="{{item.gmais}}"><img src="assets/imgs/google-plus.png" width="25px"/></a></div>
+  </ion-row>
+  </ion-item>
+</ion-row>
+</ion-card>
+
+</div>
+<br><br><br><br>
+
+
+</ion-content>

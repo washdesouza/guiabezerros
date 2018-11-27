@@ -1,0 +1,7 @@
+{
+  "name": "guiabezerros",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

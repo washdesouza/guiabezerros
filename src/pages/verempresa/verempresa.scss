@@ -1,0 +1,41 @@
+page-verempresa {
+    livre{
+        background: white;
+    }
+
+    .btn img{
+        max-width: 100%;
+        height: auto;
+    }
+    a{
+        color: firebrick ;
+        font-weight: bold;
+        text-decoration:none;
+        
+    }
+
+    .toolbar-background {
+       // background: #000;
+        border-color: transparent;
+      }
+    
+      .slide-zoom {
+        height: 35%;
+      }
+    
+      .slide-title {
+        margin-top: 0;
+      }
+    
+      .slide-image {
+        max-height: 50%;
+        max-width: 60%;
+        margin: 18px 0;
+      }
+    
+      b {
+        font-weight: 500;
+      }
+   
+
+}

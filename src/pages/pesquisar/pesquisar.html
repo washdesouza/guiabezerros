@@ -1,0 +1,50 @@
+
+<ion-header>
+    
+  <ion-row >
+      <ion-col  col-8> <img (click)="irHome()" src="assets/imgs/Home.png" width="35px"> <img src="assets/imgs/logoguiabezerros2.jpg" width="50%x"></ion-col>
+      <ion-col text-center col-4></ion-col>
+   </ion-row>   
+
+</ion-header>
+
+
+
+
+
+
+<ion-content padding>
+ 
+    <ion-card *ngFor="let item of items" (click)="irVerEmpresa(item.id)">
+  
+      <ion-item style="padding-left: 0px; margin-top:-10px; margin-bottom:-15px; padding-left: 0px;" >
+        <ion-row style="margin: -5px 8px 0px 0;">
+            <ion-col [hidden]="item.special == 0" col-4 style="margin-top: -10px">
+                <img style="border-radius: 10px; padding-top: 5px;" [src]="'https://app.agreste360graus.com.br/bezerros/userfiles/contents/big/' + item.logo" width="100%" height="100px" />
+            </ion-col>
+        
+            <ion-col col-8 style="margin-top: 5px">
+                
+                <h1 [hidden]="item.special <= 1">{{ item.company }}</h1>
+                <h2 [hidden]="item.special > 1">{{ item.company }}</h2>
+                <p>{{ item.address }}</p>
+                <h1 [hidden]="item.special <= 1">  {{ item.phone1 }}</h1>
+                <h2 [hidden]="item.special > 1">  {{ item.phone1 }}</h2>                
+            </ion-col>
+        </ion-row>
+        <ion-row style="padding: 0 5px 0 5px; margin-top: -9px" [hidden]="item.special < 3"><hr>      
+            
+          <div col-2 [hidden]="item.facebook == ''"><img src="assets/imgs/facebook.png" width="23px"/></div>
+          <div col-2 [hidden]="item.instagram == ''"><img src="assets/imgs/instagram.png" width="23px"/></div>
+          <div col-4 [hidden]="item.android == ''"><img src="assets/imgs/btn_site.png" width="100px" height="35px"/></div> 
+          <div col-4 [hidden]="item.iphone == ''"><img src="assets/imgs/btn_maps.png" width="100px" height="35px"/></div>
+          
+        </ion-row>      
+      </ion-item>
+    </ion-card>     
+       
+  </ion-content> 
+
+
+  
+  

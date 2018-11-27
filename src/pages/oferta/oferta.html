@@ -1,0 +1,46 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Ofertas</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding *ngFor="let item of items">
+  <br><br><br>
+<ion-item>
+  <ion-avatar item-start>
+    <img src="https://app.agreste360graus.com.br/bezerros/userfiles/contents/icon/{{item.logo}}">
+  </ion-avatar>
+  <h1>{{item.company}}</h1>
+  <p class="livre">Esses são as nossas ofertas</p>
+</ion-item>
+
+<h3 text-center>Ofertas da {{item.company}}</h3>
+<img src="assets/imgs/separador-linha-sombra.png" alt="">    
+<div [innerHTML]="item.website"></div>
+<h3 text-center>Alguns Produtos</h3>
+<img src="assets/imgs/separador-linha-sombra.png" alt="">  
+
+<div class="card-background-page">
+ 
+  <ion-card *ngFor="let produto of produtos " >
+
+  
+  
+    <img [src]="'https://app.agreste360graus.com.br/bezerros/userfiles/contents/big/' + produto.img">
+  
+    <ion-card-content>
+      <p>{{produto.texto}}</p>
+    </ion-card-content>
+  
+ 
+  
+  </ion-card>
+
+  </div>
+
+</ion-content>
+
+

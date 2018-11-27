@@ -1,0 +1,39 @@
+<ion-header style="background-color:white">
+  <ion-row style="background-color:white">
+      <ion-col text-center col-12 style="margin-top:15px"> <img src="assets/imgs/logoguiabezerros2.jpg" width="80%"/>
+     
+      </ion-col>
+     
+      <form [formGroup]="pesquisa" (ngSubmit)="irPesquisa('pesquisar')"> 
+        <div class="row">
+      <ion-col text-center col-10>
+      <ion-item style="margin-left:10px">
+        
+          <ion-label color="primary" floating>Pesquisar...</ion-label>
+          <ion-input type="text" name="pesquisar" formControlName="pesquisa" ></ion-input>
+         
+        
+        </ion-item> 
+        </ion-col>
+        <ion-col col-2 >
+            
+          
+        <button [disabled]="pesquisa.invalid" style="margin-top:45px" ion-button color="light" small >Ir</button>
+        
+      </ion-col>
+    </div>
+      </form>
+  </ion-row>
+  
+</ion-header>
+<ion-content class="">
+  <ion-grid>
+    <ion-row >
+        <ion-col text-center col-4 (click)="irCupom()"><img src="assets/icon/cupom.png" width="80px"/><p>Eu Quero Desconto!</p></ion-col>
+      <ion-col text-center col-4 *ngFor="let item of items " (click)="irCategoria(item.id)"><img [src]="'https://app.agreste360graus.com.br/bezerros/userfiles/contents/icon/' + item.icon" width="80px"/><p>{{item.title}}</p></ion-col>
+    
+    </ion-row>
+    
+  </ion-grid>
+  
+</ion-content>

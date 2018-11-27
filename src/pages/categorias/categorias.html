@@ -1,0 +1,28 @@
+
+<ion-header>
+    
+  <ion-row>
+    <ion-col col-10>
+      <img (click)="irHome()" src="assets/imgs/Home.png" width="35px">
+      <img src="assets/imgs/logoguiabezerros2.jpg" width="50%">
+    </ion-col>
+    <ion-col text-center col-2>
+        
+    </ion-col>
+  </ion-row>
+
+</ion-header>
+
+<ion-content>
+    
+  <div *ngFor="let banner of banners" class="col-12" (click)="irEmpresaPatrocinio(banner.id_empresa)">
+    <img src="https://app.agreste360graus.com.br/bezerros/userfiles/contents/big/{{banner.img}}" width="100%" />
+  </div>
+  <hr>
+  <ion-list>
+    <ion-item *ngFor="let item of categorias" (click)="irEmpresa(item.id)">
+      
+      {{ item.title }}
+    </ion-item>
+  </ion-list>
+</ion-content>
